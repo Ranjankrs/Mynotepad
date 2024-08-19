@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} noteapp{% endblock title %}
+{% block body %}
+<img class="diary" src="{% static 'diary1.jpg'%}">
+<div class="note">
+    <p>Welcome to My Noteapp</p>
+    <a href="note">Add your Note..</a>
+</div>
+{% endblock body %}

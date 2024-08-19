@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact us{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style1.css' %}">
+{% endblock css %}
+
+{% block body %}
+<section class="contactus-form-container" id="contactme">
+    <div class="container">
+      <h5 class="contactus-heading">Contact Me</h5>
+      <h4 class="contactus-sub-heading">Questions, Thoughts, Or Just Want To Say Hello?</h4>
+
+      <div class="contactUs-Form-container">
+        <form class="form" action="/contact" method="post"> {% csrf_token %}
+          <div class="formfield-container">
+            <input class="formfield"
+             type="text" 
+             name="name"
+             placeholder="Enter your name" />
+        
+          
+            <input class="formfield"
+             type="email" 
+             name="email"
+             value="{{user.email}}"
+             placeholder="Enter your email address" />
+          
+            <input class="formfield"
+             type="number" 
+             name="pnumber"
+             placeholder="Enter your Phone Number"  required/>
+            
+          
+            <textarea class="formfield formfield-textarea" 
+            name="desc"
+             id="" cols="30" rows="10"
+              placeholder="Enter your message"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn-pink" id="submit-btn">
+              Send Message<i class="submit-icon fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+{% endblock body %}
+
+
+
+
+
+
+
+
+

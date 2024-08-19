@@ -1,0 +1,78 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   {% block css %}
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   {% endblock css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>
+    {% block title %} {% endblock title %}
+    </title>
+</head>
+
+<body>
+    <header id="header">
+        <div class="logo"><a href="/">Mynote</a> </div>
+        <div class="hamburger" id="toggle">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav-bar" id="navbar">
+            <ul>
+                <li>
+                    <a href="/" class="active">Home</a>
+                </li>
+                {% comment %} <li>
+                    <a href="note">Note</a>
+                </li> {% endcomment %}
+                <li>
+                    <a href="/contact">Contact</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li>
+                    <a href="note">Note</a>
+                </li>
+                <li>
+                    <a href="/auth/logout" class="navlogin active">logout</a>
+                </li>
+                
+                <li>
+                </a></li>
+                {% else %}
+                <li>
+                    <a href="/auth/signup/">signup</a>
+                </li>
+                <li>
+                    <a href="/auth/login" class="navlogin active">login</a>
+                </li>
+                {% endif %}
+                
+                
+                
+                {% comment %} <div class="login">
+                    <li>
+                        <a href="/login"  class="navlogin active">Login</a>
+                    </li>
+                </div> {% endcomment %}
+            </ul>
+        </nav>
+    </header>
+    
+    {% block body %}
+    
+    {% endblock body %}
+    
+</body>
+
+</html>

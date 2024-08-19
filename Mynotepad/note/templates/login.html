@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    {% block title %}Login {% endblock title %}
+</head>
+
+<body>
+ {% block body %}
+ <div class="container" id="home">
+    <!-- {% for message in messages %}
+    <div class="message" role="alert">
+     <strong>{{message}}</strong>
+     <button type="button" class="btn-close" data-bs-dismiss="alert"aria-label="Close"></button>
+  
+    </div>
+    {% endfor %} -->
+    <div class="login-left">
+        <div class="login-header">
+            <h1>Welcome</h1>
+            <p>Please login to continue......</p>
+    {% for message in messages %}
+    <div class="message">
+     <strong>{{message}}</strong>
+    </div>
+    {% endfor %}
+
+    <!-- <div class="message">
+        <h4>submit</h4>
+    </div> -->
+        </div>
+        <form action="/auth/login/" method="post" class="login-form" autocomplete="off">{% csrf_token %}
+            <div class="login-content">
+                <div class="form-item">
+                    <label for="email">Enter Email</label>
+                    <input type="email" name="email" id="" placeholder="example@email.com">
+                </div>
+                <div class="form-item">
+                    <label for="password">Enter Password</span></label>
+                    <label for="text"></label>
+                    <input type="password" name="pass1" id="password" placeholder="Enter your Password" required class="pass-key">
+                    <img src="{% static 'eye-close.png'%}" id="eyeicon" class="password-toggle">
+                    <!-- <span class="show">Show</span> -->
+                </div>
+                <div class="form-item">
+                    <div class="checkbox">
+                        <input type="checkbox" name="" id="rememberMeCheckbox" checked>
+                        <label for="rememberMeCheckbox" class="checkboxlabel">Remember Me</label>
+                    </div>
+                </div>
+                <div class="remember-forgot">
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <div class="bg-grey">
+                    <div class="sing-up">Don't have an account? <a href="/auth/signup"class="text-link" id="sign-up" >Sign up</a></div>
+
+                </div>
+
+                <button type="submit">LogIn</button>
+            </div>
+        </form>
+    </div>
+    <div class="login-right">
+        <img src="{% static 'images/Data Arranging_Two Color.svg' %}" alt="">
+    </div>
+</div>
+
+<script>
+    let eyeicon = document.getElementById("eyeicon");
+    let password = document.getElementById("password");
+
+    eyeicon.onclick = function() {
+        if (password.type == "password"){
+            password.type = "text"; 
+            eyeicon.src = "eye-open.png";
+        }else{
+            password.type = "password";
+            eyeicon.src = "eye-close.png";
+        }
+    } 
+</script>
+
+<script src="javascript/index.js"></script>
+</body>
+ {% endblock body %}
+
+</html>
